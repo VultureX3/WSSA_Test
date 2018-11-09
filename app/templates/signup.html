@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Sign up</h2>
+  <form method="post" class="form-horizontal">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+          <div class="form-group">
+              <label for="id_username" class="col-md-2 control-label">{{ field.label_tag }}</label>
+              <div class="col-md-10">
+                    {{ field }}
+                        {% if field.help_text %}
+                          <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                </div>
+            </div>
+      </p>
+    {% endfor %}
+    <input type="submit" value="Sign up" class="btn btn-default" />
+  </form>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

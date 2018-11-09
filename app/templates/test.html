@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+{% for q in questions %}
+    <div>
+        <h4>{{ q.0.text }}</h4>
+        <ul>
+        {% for ans in q.1 %}
+            <li><input type="radio" id="{{ ans.id }}" name="question{{ q.0.id }}" value="email">
+                <label for="{{ ans.id }}">{{ ans.text }}</label></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+<div>
+    <button type="submit">Submit</button>
+</div>
+
+{%endblock %}

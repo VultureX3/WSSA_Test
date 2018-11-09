@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>WSSA Test</h1>
+    <p>Join us</p>
+</div>
+{% if user.is_authenticated %}
+<div class="row">
+    <a href="/test/"><h3>Test</h3></a>
+</div>
+{% endif %}
+
+{%endblock %}
